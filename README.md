@@ -59,6 +59,8 @@ setCounter updates the DOM with counter variable on all the places at once....Ja
 Whenever the setCounter function will be called the React will react and make all the DOM update with current value of its associated variable.
 
 
+////////////////////// lecture 6 ///////////////////////
+
 
 
 
