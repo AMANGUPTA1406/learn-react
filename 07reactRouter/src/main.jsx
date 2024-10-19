@@ -10,29 +10,6 @@ import ContactUs from "./components/ContactUs/ContactUs";
 import User from "./components/User/User.jsx";
 import GitHub from "./components/GitHub/GitHub.jsx";
 
-
-
-// const router = createBrowserRouter([
-//   {
-//     path: "/",
-//     element: <Layout/> ,
-//     children: [
-//       {
-//         path: "",
-//         element: <Home/>
-//       },
-//       {
-//         path: "about",
-//         element: <About/>
-//       },
-//       {
-//         path: "contactUs",
-//         element: <ContactUs/>
-//       }
-//     ]
-//   }
-// ])
-
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout/>}>

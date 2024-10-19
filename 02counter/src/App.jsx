@@ -23,6 +23,14 @@ function App() {
     setCounter(counter-1);
   }
 
+  const defaultValue = () =>{
+    if(counter==0){
+      return;
+    }
+
+    setCounter(0);
+  }
+
   return (
     <>
     <h1>Chai aur React || Counter</h1>
@@ -30,6 +38,8 @@ function App() {
     <button onClick={addValue}> Add value {counter} </button>
     <br/>
     <button onClick={removeValue}>Remove Value {counter}</button>
+    <br/>
+    <button onClick={defaultValue}>Default Value {counter}</button>
     </>
   )
 }

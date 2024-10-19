@@ -1,5 +1,6 @@
 import React from 'react'
 
+//these are default values if name and post are not passed in the card component
 function Card({name="Lucky",post="Engineer, India"}){
     console.log(name,post);
     return(

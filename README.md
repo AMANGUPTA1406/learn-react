@@ -22,7 +22,7 @@ similar to javaScript, React also renders the structure.
 
 We can also remove "<React.StrictMode>" tag we will study on it further.
 
-The index.html file although doees not contain script tags but the react-scripts gets injected automatically, we can see them on package.json file.
+The index.html file although does not contain script tags but the react-scripts gets injected automatically, we can see them on package.json file.
 
 "const root = ReactDOM.createRoot(document.getElementById('root'));" this creates a reactDOM and its root is taken from an element from the html by getElement. After it react renders the DOM to the main page.
 
@@ -77,7 +77,7 @@ study : https://github.com/acdlite/react-fiber-architecture
 
 A utility-first CSS framework = tailwind CSS.
 Steps:  go to tailwind website -> get started -> framework Guide -> which type of framework -> vite React
-Steps: follow the given steps given -> change the content -> it searches in index file and also in the files that are in src folder.
+Steps: follow the given steps give  n -> change the content -> it searches in index file and also in the files that are in src folder.
 
 JSX is not a regular javaScript file, class -> className, etc;
 
@@ -92,6 +92,7 @@ whenever we want to inject javascript into jsx return element we use "{}" currly
 we can use {variable names} in place of props
 If we have to pass arrays or any other type of variable we have to insert it into object first and then pass that object in an variable also placing that object in curly braces==== someObj={myArr}
 
+While recevining the variables will be recived in object.
 
 
 /////////////////////lecture 8 /////////////////////
@@ -108,12 +109,15 @@ onClick always needs a function so, we can directly write a function inside it n
 //////////////////////lecture 10 ////////////////////
 creating a password generator
 
+<React.StrictMode> is a special component in React that helps identify potential problems in your application during development. no impact on the production build, additional checks and warnings for its descendants.
 
 useCallback(fn, dependencies)  : Call useCallback at the top level of your component to cache a function definition between re-renders.
 fn: The function value that you want to cache.
 dependencies: The list of all reactive values referenced inside of the fn code. Reactive values include props, state, and all the variables and functions declared directly inside your component body.
 import { useCallback } from 'react';
 useCallback is for optimization, otherwise we can also not use it.
+
+The useCallback hook in React is used to memoize a function, which means it stores the function instance and returns the same function reference on subsequent renders, unless one of its dependencies changes
 
 the htmlFor attribute is used to get the HTML for the given HTML elements.
 
@@ -139,10 +143,6 @@ Custom hooks can also use built-in hooks from React.
 
 
 
-
-
-
-
 //////////////////////lecture 12 ////////////////////
 React Router DOM
 Client side routing allows your app to update the URL from a link click without making another request for another document from the server. Instead, your app can immediately render some new UI and make data requests with fetch to update the page with new information.
@@ -150,6 +150,14 @@ Client side routing allows your app to update the URL from a link click without 
 Link and NavLink are the two new concepts which are used from reacr Router dom .
 Link is in place of <a> tag because a tag reloads the page again so what will be the point of using react.
 NavLink have bit extra properties - it is used when classes have to changed so we will define className in callback. so this call back have some properties named "isActive" which shows is the mouse is on the active site. when yess we will change the classes.
+
+Key Features of Link:
+Navigates to a specified route without reloading the page.
+Suitable for simple navigation when you don't need any special styles or behavior.
+
+NavLink is a specialized version of Link that allows you to add styling or CSS classes to the active navigation link
+activeClassName: This prop specifies the class name to apply when the link is active (i.e., when the current URL matches the to path).
+
 className={({isActive}) =>
             `block py-2 pr-4 pl-3 
             ${isActive ? "text-orange-700 ":"text-gray-700"} 
@@ -214,7 +222,11 @@ using useParams() form react-router-dom we can access userId.
 
 //////////////////////lecture 13 ////////////////////
         Context Api
-If we want to create a card inside another card and inside another card. let say we have Left and right navigation bars in right bar we have topCard and Bottom card. in top card it has a normal card component which wants a props username="chai". In react if we want to pass that prop then we have to pass it to all the component inside by inside. For this we use Context Api form which we need not to pass prop to all the component in order to pass it to most inside one. Context Api exist only in React.
+If we want to create a card inside another card and inside another card. let say we have Left and right navigation 
+bars in right bar we have topCard and Bottom card. in top card it has a normal card component which wants a props 
+username="chai". In react if we want to pass that prop then we have to pass it to all the component inside by inside. 
+For this we use Context Api form which we need not to pass prop to all the component in order to pass it to most inside one. 
+Context Api exist only in React.
 For this we make a Global variable from where any component can take that variable.
 Since it is library not a framework so naming is not that strong importance.
 
@@ -291,19 +303,56 @@ First create the project -> make a contextAPI
 Give default values nessecary
 
 if we don't want to write return in the function we have to remove the curly braces and write the function in the same line.
+Read the functions definition in the App.jsx file 
+
+For deletion mostly we use filter method in the javascript.
+
+Now we will study local storage in javascript or React
+localStorage can be acessed directly, it have two methods i.e. setItem and getItem.   
+The data is not deleted when the browser is closed, and are available for future sessions.
+It stores in the string format, so we have to convert it to JSON format.
+
+JSON.parse(localStorage.getItem("todos")); convert the string to JSON
+For converting the JSON to string we use 
+JSON.stringify(todos);
+
+if we don't want to use return in a callback then we can use () which means auto return.
 
 
 
+////////////////////// lecture 15 ///////////////////
+Redux 
 
+redux is a library, so use it in react we have React-Redux. Redux is a JS library for predictable and maintainable global state management
+For solving the props problem we should have a central library or store from where we take the useful props.
+Before the Redux there was "Flux" for the state management, there was another use that is dataflow. i.e. there should 
+be a struc that how will data will go to the store and how will we take the data from it. proper way. So since this 
+was also not very good so Redux is introduced. It is a independent library so can work with many react, vue etc. so it is for JS apps.
 
+Store--> type of a global variable, place where we will store the props. stores have many mini portions in it.
+reducers--> from where changes will happen in store.
+useSelector--> to select and extract the value form the store.
+useDispatch--> when we have to send the value to the store.
 
+The Redux Toolkit package is intended to be the standard way to write Redux logic. It was originally created to help address three common concerns about Redux:
+1. "Configuring a Redux store is too complicated"
+2. "I have to add a lot of packages to get Redux to do anything useful"
+3. "Redux requires too much boilerplate code"
 
+How to use Redux toolkit ? -->  npm install @reduxjs/toolkit  --> npm install react-redux
+How to create a store ? --> create a folder anywhere let say "src" --> create folder app --> In it create a file store.js --> import {configureStore} from '@reduxjs/toolkit'; --> export const store = configureStore({});
 
+src --> features --> todo --> todoSlice.js
+Slice key word is a naming convention for redux. Reducers==slice in redux toolkit
+{createSlice} --> Simplifies the process of creating a Redux "slice" of state. A slice is a portion of the Redux state along with the reducers (functions that change the state) and actions (functions to trigger those changes).
+{nanoid} --> A function that generates unique IDs.
+//see todoSlice
+// see store.
 
+-->  e.preventDefault()
+is a method that is used to prevent the default behavior of an event from occurring. It is commonly used in form submissions and other user-triggered events (like clicks or key presses) to stop the browser's default action, so you can implement your custom logic instead.
 
+Now after creating the store and it's functionality. Create the components to use it.
+//AddTodo, Todo seeFiles
 
-
-
-
-
-
+//at the end here also we have to wrap all the components to access it so just wrap with <Provider> component main.jsx, also sending the store.
